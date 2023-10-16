@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Stock Labeling</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="badge.css">
+    
+</head>
+<body></body>
+
+    <div class="container">
+    <div class="form">
+
+        <h1>Badge stock labeling</h1>
+        <h6>This app prints best in Safari</h6>
+
+        <div class="form-items">
+            <div class="form-data">
+                <p class="details">Box info</p>
+                <div class="input-wrapper">
+                <label for="show">Show Name:</label>
+                <input type="text" placeholder="Show Name" name="show" class="shipping-item">
+                </div>
+
+                <div class="input-wrapper">
+                <label for="pr">PR Number:</label>
+                <input type="text" placeholder="PR Number" name="pr" class="shipping-item">
+                </div>
+
+                <div class="input-wrapper">
+                <label for="omr">OHR</label>
+                <input type="text" placeholder="OMR Number" name="omr" class="shipping-item">
+                </div>
+
+                <div class="input-wrapper">
+                <label for="manager">PM:</label>
+                <input type="text" placeholder="Project Manager" name="manager" class="shipping-item">
+                </div>
+
+                <div class="input-wrapper">
+                <label for="shipWith">Ship With:</label>
+                <input type="text" placeholder="Ship with OMRs" name="shipWith" class="shipping-item">
+                </div>
+
+                <div class="input-wrapper">
+                <label for="date">Ship Date</label>
+                <input type="date" placeholder="Shipdate" name="date" class="shipping-item">
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="date">Notes</label>
+                    <textarea rows="4" cols="60" type="text" placeholder="Notes" name="notes" class="shipping-item" ></textarea>
+                </div>
+
+
+                <p class="details">Box Contents</p>
+                <input type="number" placeholder="Quantity" name="qty" class="shipping-item">
+                <select name="type" id="" class="shipping-item" >
+                    <option value="DT">DT</option>
+                    <option value="InkJet-Epson">InkJet-Epson</option>
+                    <option value="Large Format PVC">Large Format PVC</option>
+                    <option value="DT UHF">DT UHF</option>
+                    <option value="Preprint">Preprint Stock</option>
+                    <option value="Badge Holders">Badge Holders</option>
+                </select>
+                <select name="size" id="" class="shipping-item">
+                    <option value="4x3 DS" selected>4x3 DS</option>
+                    <option value="4x3 SS">4x3 SS</option>
+                    <option value="4x6 DS">4x6 DS</option>
+                    <option value="4x6 SS">4x6 SS</option>
+                    <option value="No Punch">No Punch</option>
+                    <option value="1 Punch">1 Punch</option>
+                    <option value="2 Punch">2 Punch</option>
+                </select>
+                <select name="tech" id="" class="shipping-item">
+                    <option value="No Tech" selected>No Tech</option>
+                    <option value="UHF">UHF</option>
+                    <option value="NFC">NFC</option>
+                    <option value="Dual Chip">Dual Chip</option>
+                </select>
+
+
+                <p class="details">Flags</p>
+                <input type="checkbox" name="pallet" id="pallet" onclick="updateFlags('pallet-label')">
+                <label for="pallet" class="checklabel" >Pallet</label>
+                <input type="checkbox" name="international" id="international" onclick="updateFlags('international-label')">
+                <label for="international" class="checklabel">International</label>
+                
+                <p class="details">Print Options</p>
+                <button class="btn" id="active-size" onclick="cssPagedMedia.size('4in 6.75in', 'zebra');">Zebra</button>
+                <button class="btn" onclick="cssPagedMedia.size('8.5in 11in', 'full-page');">Full Page</button>
+                <button class="btn" onclick="cssPagedMedia.size('5.5in 11in', 'half-page');">Half Page</button>
+
+                <p class="details">Print</p>
+
+                <button class="btn" onclick="addLabel()">Add label</button>
+                <button class="btn" onclick="removeLabel()">Remove Label</button>
+                <button class="btn" id="print" onclick="print()">Print</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sample">
+        <div class="ship-item zebra" id="printObject">
+            <h1><span class="material-symbols-outlined">festival</span><span class="show">Show Name</span></h1>
+            <h1><b>
+                <span class="material-symbols-outlined">local_shipping </span><span class="date">Ship Date</span>
+            </b>
+            </h1>
+            <h3><span class="material-symbols-outlined">person</span><span class="manager">Manager</span></h3>
+            <h3><span class="material-symbols-outlined">task</span>PR-<span class="pr"></span></h3>
+            <h3><span class="material-symbols-outlined">imagesearch_roller</span>OMR-<span class="omr"></span></h3>
+            
+            
+            <h6>Ship with: <span class="shipWith"></span></h6>
+            <hr>
+            <h4><span class="qty"></span> | <span class="type">DT</span> | <span class="size">4x3 DS</span> | <span class="tech">No Tech</span></h4>
+            <hr>
+            <h5 id="flags">
+                <span class="hide" id="pallet-label">
+                    <span class="material-symbols-outlined">forklift </span>
+                    Ship with pallet
+                </span>
+
+                <span class="hide" id="international-label">
+                    <span class="material-symbols-outlined">flight </span>international
+                </span>
+            </h5>
+
+            
+            <h6 style="padding:5px 35px;"><span class="material-symbols-outlined">chat</span><span class="notes"></span></h6>
+
+            <div class="footer">
+                <h4>_______  OF _______</h4>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="badge.js"></script>
+
+    
+</div>
+</body>
+</html>
