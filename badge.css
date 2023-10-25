@@ -520,12 +520,11 @@ body {
     .sample {
         padding: 0;
         margin: 0 auto;
-        height: 100%;
     }
 
     .zebra{
       width: 4in;
-      height:6.75in;
+      height:7.75in;
       margin: 0;
     }
     .full-page{
